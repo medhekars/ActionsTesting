@@ -31,7 +31,7 @@
         </plugins>
   </build>
   
- <!--  <distributionManagement>
+  <distributionManagement>
   
     <repository>
         <id>central</id>
@@ -44,5 +44,5 @@
         <url>http://localhost:8081/artifactory/Actions-Testing</url>
     </snapshotRepository>
 </distributionManagement>
-       -->
+       
 </project>
