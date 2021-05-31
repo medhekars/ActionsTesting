@@ -4,5 +4,18 @@
   <artifactId>ActionsTesting</artifactId>
   <version>0.0.2-SNAPSHOT</version>
   <packaging>war</packaging>
+  
+  <distributionManagement>
+    <repository>
+        <id>central</id>
+        <name>Shailesh-releases</name>
+        <url>http://localhost:8081/artifactory/Actions-Testing</url>
+    </repository>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>Shailesh-snapshots</name>
+        <url>http://localhost:8081/artifactory/Actions-Testing</url>
+    </snapshotRepository>
+</distributionManagement>
       
 </project>
