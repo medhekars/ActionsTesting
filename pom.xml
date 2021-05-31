@@ -22,7 +22,7 @@
                                 <contextUrl>http://localhost:8081/artifactory</contextUrl>
 								<username>admin</username>
 								<password>Shailu1503@</password>
-								<repoKey>Actions-Testing</repoKey>
+								<repoKey>MAVEN-DEMO-PROJECT</repoKey>
 							</publisher>	
                         </configuration>
                     </execution>
@@ -36,12 +36,12 @@
     <repository>
         <id>central</id>
         <name>Shailesh-releases</name>
-        <url>http://localhost:8081/artifactory/Actions-Testing</url>
+        <url>http://localhost:8081/artifactory/MAVEN-DEMO-PROJECT</url>
     </repository>
     <snapshotRepository>
         <id>snapshots</id>
         <name>Shailesh-snapshots</name>
-        <url>http://localhost:8081/artifactory/Actions-Testing</url>
+        <url>http://localhost:8081/artifactory/MAVEN-DEMO-PROJECT</url>
     </snapshotRepository>
 </distributionManagement>
        
