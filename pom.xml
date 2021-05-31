@@ -5,7 +5,34 @@
   <version>0.0.2-SNAPSHOT</version>
   <packaging>war</packaging>
   
-  <distributionManagement>
+  <build>
+  <plugins>
+  		<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>3.0.0-M1</version>
+                <executions>
+                    <execution>
+						<id>upload-artifact</id>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                        <configuration>
+                            <publisher>
+                                <contextUrl>http://localhost:8081/artifactory</contextUrl>
+								<username>admin</username>
+								<password>Shailu1503@</password>
+								<repoKey>Actions-Testing</repoKey>
+							</publisher>	
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+  </build>
+  
+ <!--  <distributionManagement>
+  
     <repository>
         <id>central</id>
         <name>Shailesh-releases</name>
@@ -17,5 +44,5 @@
         <url>http://localhost:8081/artifactory/Actions-Testing</url>
     </snapshotRepository>
 </distributionManagement>
-      
+       -->
 </project>
