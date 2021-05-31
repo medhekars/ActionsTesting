@@ -1,7 +1,7 @@
-<%-- <%@ page language="java" contentType="text/html;  pageEncoding="${encoding}"%> --%>
+<%@ page language="java" contentType="text/html" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<html>
+<html> 
 <head><title>First JSP</title></head>
 <body>
   <%
@@ -16,6 +16,6 @@
   <%
     }
   %>
-  <a href="<%= request.getRequestURI() %>"><h3>Try Again</h3></a>
+  <a href="<%= request.getRequestURI() %>"> Try Again</a>
 </body>
 </html>
