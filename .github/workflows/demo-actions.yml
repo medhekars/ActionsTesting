@@ -31,7 +31,7 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
           
-  Quality Gate:
+  Quality_Gate:
     needs: [ Setup ]
     runs-on: self-hosted
     steps:
@@ -43,13 +43,13 @@ jobs:
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
         
   Build:
-    needs: [ Quality Gate ]
+    needs: [ Quality_Gate ]
     runs-on: self-hosted
     steps: 
       - name: Package in WAR file  
         run: mvn -B package --file pom.xml
         
-  Deploy Artifact to JFROG:
+  Deploy_Artifact_To_JFROG:
     needs: [ Build ]  
     runs-on: self-hosted
     steps:        
