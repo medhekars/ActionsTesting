@@ -12,7 +12,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  setup:
+  Setup:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
@@ -31,7 +31,8 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
           
-  quality-gate:
+  Quality Gate:
+    needs: [ Setup ]
     runs-on: self-hosted
     steps:
       - name: Build along with Code Quality via SONAR   
@@ -41,13 +42,15 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
         
-  build:
+  Build:
+    needs: [ Quality Gate ]
     runs-on: self-hosted
     steps: 
       - name: Package in WAR file  
         run: mvn -B package --file pom.xml
         
-  Deploy-artifact-JFROG:
+  Deploy Artifact to JFROG:
+    needs: [ Build ]  
     runs-on: self-hosted
     steps:        
       - name: Copy Artifact to JFROG    
