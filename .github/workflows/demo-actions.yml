@@ -33,7 +33,6 @@ jobs:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
-          
   build:
     name: Cache Maven packages
     runs-on: self-hosted
@@ -43,7 +42,6 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-          
   build:
     name: Code Quality Check via SonarQube
     runs-on: self-hosted
@@ -53,13 +51,11 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
-
   build:
     name: Build WAR file with Maven
     runs-on: self-hosted
     steps:      
         run: mvn -B package --file pom.xml
-        
    build:
     name: Publish Artifacts to JFROG
     runs-on: self-hosted
