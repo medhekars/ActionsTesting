@@ -44,11 +44,10 @@ jobs:
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
       - name: Build with Maven
         run: mvn -B package --file pom.xml
-      - name: Ping Artifactory
-        uses: katcosgrove/jfrogcli-action@v1.0.0-beta
-        with:
-            cmd: 'ping'
+      - name: Publish to GitHub Packages Apache Maven
+        run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
         env:
             auth: ${{ secrets.AUTH }}
             token: ${{ secrets.JFROG_TOKEN }}
             url: ${{ secrets.URL }}
+            GITHUB_TOKEN: ${{ github.token }}
