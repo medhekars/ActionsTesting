@@ -44,11 +44,11 @@ jobs:
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
       - name: Build with Maven
         run: mvn -B package --file pom.xml
-      - name: publish to artifactory JFROG
-        uses: advancedcsg-open/action-jfrog-cli@master
+      - name: Ping Artifactory
+        uses: katcosgrove/jfrog-actions@master
         with:
-          url: 'http://localhost:8081'
-          credentials type: 'accesstoken'
-          access token: ${{ secrets.JFROG_TOKEN }}
-          args: u "admin/*" "http://localhost:8082/artifactory/MAVEN-DEMO-PROJECT" --recursive=true --build-name=actionsLearning
-
+            cmd: 'ping'
+        env:
+            auth: ${{ secrets.AUTH }}
+            token: ${{ secrets.JFROG_TOKEN }}
+            url: ${{ secrets.URL }}
