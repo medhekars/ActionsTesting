@@ -62,7 +62,7 @@ jobs:
     steps:      
         run: mvn deploy -s "D:\Principal-Learnings\apache-maven-3.8.1-bin\apache-maven-3.8.1\conf\settings.xml"
         env:
-            auth: ${{ secrets.AUTH }}
-            token: ${{ secrets.JFROG_TOKEN }}
-            url: ${{ secrets.URL }}
-            GITHUB_TOKEN: ${{ github.token }}
+          auth: ${{ secrets.AUTH }}
+          token: ${{ secrets.JFROG_TOKEN }}
+          url: ${{ secrets.URL }}
+          GITHUB_TOKEN: ${{ github.token }}
