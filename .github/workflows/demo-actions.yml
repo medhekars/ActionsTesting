@@ -19,42 +19,29 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-  build:
-    name: Cache SonarQube packages
-    runs-on: self-hosted
-    steps:
-      - uses: actions/cache@v1
+      - name: Cache SonarQube packages
+        uses: actions/cache@v1
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
-  build:
-    name: Cache Maven packages
-    runs-on: self-hosted
-    steps:
-      - uses: actions/cache@v1
+      - name: Cache Maven packages    
+        uses: actions/cache@v1
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-  build:
-    name: Code Quality Check via SonarQube
-    runs-on: self-hosted
-    steps:     
+      - name: Build along with Code Quality via SONAR   
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
-  build:
-    name: Build WAR file with Maven
-    runs-on: self-hosted
-    steps:      
+        
+      - name: Package in WAR file  
         run: mvn -B package --file pom.xml
-  build:
-    name: Publish Artifacts to JFROG
-    runs-on: self-hosted
-    steps:      
+        
+      - name: Copy Artifact to JFROG  
         run: mvn deploy -s "D:\Principal-Learnings\apache-maven-3.8.1-bin\apache-maven-3.8.1\conf\settings.xml"
         env:
           auth: ${{ secrets.AUTH }}
