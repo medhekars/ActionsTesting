@@ -44,8 +44,10 @@ jobs:
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
       - name: Build with Maven
         run: mvn -B package --file pom.xml
-      - name: Publish to GitHub Packages Apache Maven
-        run: mvn deploy -s D:/Principal-Learnings/apache-maven-3.8.1-bin/apache-maven-3.8.1/conf/settings.xml
+      - uses: jfrog/setup-jfrog-cli@v1
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          JF_ARTIFACTORY_1: ${{ secrets.artifactory_token_1 }}
+        run: jfrog rt ping
+    
+    
 
