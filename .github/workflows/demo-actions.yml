@@ -56,7 +56,7 @@ jobs:
     runs-on: self-hosted
     steps:      
         run: mvn -B package --file pom.xml
-   build:
+  build:
     name: Publish Artifacts to JFROG
     runs-on: self-hosted
     steps:      
