@@ -9,6 +9,7 @@ on:
     branches: [ main ]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build:
@@ -16,14 +17,14 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
-        with:
+         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
   build:
     name: Cache SonarQube packages
     runs-on: self-hosted
     steps:
       - uses: actions/cache@v1
-        with:
+         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
@@ -32,7 +33,7 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/cache@v1
-        with:
+         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
