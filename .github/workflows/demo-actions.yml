@@ -59,8 +59,9 @@ jobs:
           auth: ${{ secrets.AUTH }}
           token: ${{ secrets.JFROG_TOKEN }}
           url: ${{ secrets.URL }}
-          GITHUB_TOKEN: ${{ github.token }}       
- Deploy_Artifact_To_Tomcat:
+          GITHUB_TOKEN: ${{ github.token }}
+          
+  Deploy_Artifact_To_Tomcat:
     needs: [ Upload_Artifact_To_JFROG ]  
     runs-on: self-hosted
     steps:        
