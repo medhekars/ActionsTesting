@@ -53,7 +53,5 @@
         <url>http://localhost:8081/artifactory/MAVEN-DEMO-PROJECT</url>
     </snapshotRepository>
 </distributionManagement>
-
-
        
 </project>
