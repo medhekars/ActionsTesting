@@ -66,4 +66,4 @@ jobs:
     runs-on: self-hosted
     steps:        
       - name: Deploy WAR to Tomcat    
-        run: mvn install tomcat7:deploy -s "D:\Principal-Learnings\apache-maven-3.8.1-bin\apache-maven-3.8.1\conf\settings.xml"
+        run: mvn install tomcat7:deploy
