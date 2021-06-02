@@ -28,11 +28,20 @@
                     </execution>
                 </executions>
             </plugin>
+            
+            <plugin>
+  				<groupId>org.apache.tomcat.maven</groupId>
+  				<artifactId>tomcat7-maven-plugin</artifactId>
+  				<version>2.0</version>
+  				<configuration>
+    				<url>http://localhost:8080/manager/ActionsTesting</url>
+    				<path>/ActionsTesting</path>
+  				</configuration>
+		    </plugin>    
         </plugins>
   </build>
   
   <distributionManagement>
-  
     <repository>
         <id>central</id>
         <name>Shailesh-releases</name>
@@ -44,5 +53,7 @@
         <url>http://localhost:8081/artifactory/MAVEN-DEMO-PROJECT</url>
     </snapshotRepository>
 </distributionManagement>
+
+
        
 </project>

@@ -49,7 +49,7 @@ jobs:
       - name: Package in WAR file  
         run: mvn -B package --file pom.xml
         
-  Deploy_Artifact_To_JFROG:
+  Upload_Artifact_To_JFROG:
     needs: [ Build ]  
     runs-on: self-hosted
     steps:        
@@ -60,3 +60,10 @@ jobs:
           token: ${{ secrets.JFROG_TOKEN }}
           url: ${{ secrets.URL }}
           GITHUB_TOKEN: ${{ github.token }}
+          
+ Deploy_Artifact_To_Tomcat:
+    needs: [ Upload_Artifact_To_JFROG ]  
+    runs-on: self-hosted
+    steps:        
+      - name: Deploy WAR to Tomcat    
+        run: mvn install tomcat7:deploy -s "D:\Principal-Learnings\apache-maven-3.8.1-bin\apache-maven-3.8.1\conf\settings.xml"
